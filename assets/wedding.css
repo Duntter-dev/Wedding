@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Pinyon+Script&display=swap');
+
+
+@font-face {
+    font-family: 'ms-claudy';
+    src: url('../fonts/ms-claudy.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+:root {
+    --primary-color: #800020;       /* deep romantic brown */
+    --secondary-color: #8c5a5a;
+    --accent-color: #636B2F ;        /* olive green accent */
+    --background-color: #f8f5f2;    /* soft cream */
+    --text-color: #3a2e2e;
+
+    --header-font: 'Pinyon Script', cursive;
+    --body-font: 'Lora', serif;
+    --accent-font: 'ms-claudy', cursive;
+}
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--body-font);
+    margin: 0;
+    padding: 0;
+    
+    /* Flexbox magic to center everything perfectly on the screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Prevents scrollbars */
+}
+
+/* Elegant script headings */
+h1, h2, h3 {
+    font-family: var(--header-font);
+    letter-spacing: 1px;
+}
+
+.background-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: -1;
+    opacity: 0.3; /* Subtle background image */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+}
+
+.greeting {
+    font-size: clamp(0.8rem, 2.5vw, 1.5rem);
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    color: var(--accent-color);
+    text-align: center;
+}
+
+/* Main names */
+.wedding-names {
+    font-family: var(--accent-font);
+    font-size: clamp(15.5rem, 8vw, 4.5rem);
+    margin: 10px 0;
+    color: var(--primary-color);
+    letter-spacing: 3px;
+}
+
+/* Subtitle */
+.accent {
+    font-family: var(--body-font);
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+    margin-top: 10px;
+}
+
+.container p {
+    opacity: 0;
+    animation: fadeUp 1.5s ease forwards;
+}
+
+.envelope {
+    position: relative;
+    width: 280px;
+    height: 180px;
+    background: #f3e8dc;
+    margin: 30px auto;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }   50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+/* Bottom Flap (Pocket) */
+.envelope::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 140px 100px 140px; /* Triangle pointing up */
+    border-color: transparent transparent #e6dace transparent;
+    z-index: 1;
+}
+
+
+/* Top Flap */
+.envelope::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 100px 140px 0 140px; /* Triangle pointing down */
+    border-color: #d8c8b4 transparent transparent transparent;
+    z-index: 2;
+    transform-origin: top;
+    transition: transform 0.6s ease;
+}
+
+.envelope.open::after {
+    transform: rotateX(180deg);
+    z-index: 0;
+}
+
+/* Wax seal */
+.seal {
+    position: relative;
+    z-index: 3;
+    
+    width: 60px;
+    height: 60px;
+    background: #7a1f1f;
+    color: #fff;
+    border-radius: 50%;
+    font-family: 'Pinyon Script', cursive;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgba(255,255,255,0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    animation: pulse 2s infinite;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* When opened */
+.envelope.open .seal {
+    transform: scale(1.5);
+    opacity: 0;
+}
+
+.greeting { animation-delay: 0.3s; }
+.wedding-names { animation-delay: 0.8s; }
+.accent { animation-delay: 1.3s; }
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    .wedding-names {
+        letter-spacing: 1px;
+    }
+
+    .accent {
+        letter-spacing: 2px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 800px;
+        margin: auto;
+    }
+}
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+    z-index: -1;
+}
