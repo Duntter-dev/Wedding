@@ -8,9 +8,9 @@
     font-style: normal;
 }
 :root {
-    --primary-color: #800020;       /* deep romantic brown */
+    --primary-color: #390000;       /* deep romantic brown */
     --secondary-color: #8c5a5a;
-    --accent-color: #636B2F ;        /* olive green accent */
+    --accent-color: #2b300d ;        /* olive green accent */
     --background-color: #f8f5f2;    /* soft cream */
     --text-color: #3a2e2e;
 
@@ -97,7 +97,7 @@ h1, h2, h3 {
     position: relative;
     width: 280px;
     height: 180px;
-    background: #f3e8dc;
+    background: var(--accent-color);
     margin: 30px auto;
     cursor: pointer;
     border-radius: 5px;
@@ -128,7 +128,7 @@ h1, h2, h3 {
     height: 0;
     border-style: solid;
     border-width: 0 140px 100px 140px; /* Triangle pointing up */
-    border-color: transparent transparent #e6dace transparent;
+    border-color: transparent transparent var(--accent-color) transparent;
     z-index: 1;
 }
 
@@ -143,7 +143,7 @@ h1, h2, h3 {
     height: 0;
     border-style: solid;
     border-width: 100px 140px 0 140px; /* Triangle pointing down */
-    border-color: #d8c8b4 transparent transparent transparent;
+    border-color: var(--primary-color) transparent transparent transparent;
     z-index: 2;
     transform-origin: top;
     transition: transform 0.6s ease;
@@ -161,7 +161,7 @@ h1, h2, h3 {
     
     width: 60px;
     height: 60px;
-    background: #7a1f1f;
+    background: var(--accent-color);
     color: #fff;
     border-radius: 50%;
     font-family: 'Pinyon Script', cursive;

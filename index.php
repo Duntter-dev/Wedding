@@ -1,5 +1,5 @@
 <?php
-
+require 'vendor/autoload.php';
 $body = <<<HTML
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +12,7 @@ $body = <<<HTML
 <body>
 
 <div class="container">
-    <!-- <img src="img/opening-img.jpg" alt="Wedding Background" class="background-img"> -->
+    <img src="img/opening-img.jpg" alt="Wedding Background" class="background-img">
     <p class="greeting">We are getting married!</p>
     <p class="wedding-names">Jet & Nikka</p>
     <div class="envelope" onclick="openEnvelope()">
